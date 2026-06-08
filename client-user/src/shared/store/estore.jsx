@@ -1,0 +1,1 @@
+//por si queremos manejar un estado global dentro del proyecto
