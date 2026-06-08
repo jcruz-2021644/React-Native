@@ -2,36 +2,38 @@ import { TouchableOpacity, Text, StyleSheet, ActivityIndicator } from "react-nat
 import { COLORS, SPACING, FONT_SIZE } from "../../constants/themes";
 
 const Button = ({
-    tittle,
+    title,
     onPress,
     loading,
     variant = "primary",
-    styles,
+    style,
     ...props
 }) => {
-    const isSecundary = variant === "secundary"
+
+    const isSecondary = variant === "secondary"
+
     return (
         <TouchableOpacity
             style={[
                 styles.button,
-                isSecundary ? styles.secundary : styles.primary,
-                loading && styles.buttonDisable,
+                isSecondary ? styles.buttonSecondary : styles.buttonPrimary,
+                loading && styles.buttonDisabled,
                 style
             ]}
             onPress={onPress}
-            disable={loading}
+            disabled={loading}
             activeOpacity={0.8}
             {...props}
         >
             {loading ? (
                 <ActivityIndicator
-                    color={isSecundary ? COLORS.primary : COLORS.surface}
+                    color={isSecondary ? COLORS.primary : COLORS.surface}
                 />
             ) : (
                 <Text
                     style={[
                         styles.text,
-                        isSecundary ? styles.textSecundary : styles.textPrimary
+                        isSecondary ? styles.textSecondary : styles.textPrimary
                     ]}
                 >
                     {title}
@@ -71,4 +73,5 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
     },
 });
+
 export default Button;
